@@ -18,14 +18,13 @@ void main(){
     client.sin_addr.s_addr = inet_addr("127.0.0.1");
     client.sin_port = htons(8080);
 
-    bind(servr, (struct sockaddr*)&client, sizeof(client));
-
     while(1){ 
-        recvfrom(servr, buffer, sizeof(buffer)-1, 0, (struct sockaddr*)&client, &length);
-        printf("Server: %s", buffer); 
-        printf("client: ");
-        fgets(buffer, 100, stdin);
+        printf("Server : Enter a number - "); 
+        fgets(buffer, 200, stdin);
         sendto(servr, buffer, strlen(buffer), 0, (struct sockaddr*)&client, sizeof(client));
+        memset(buffer,0,sizeof(buffer));
+        recvfrom(servr, buffer, sizeof(buffer)-1, 0, (struct sockaddr*)&client, &length);
+        printf("Server received: %s", buffer);
     }
     close(servr);
 }
