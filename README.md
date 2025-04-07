@@ -77,8 +77,8 @@ gcc filename.c -o output [-lm for math functions if needed]
 ```bash
 gcc TCP/Chatserver.c -o chatserver
 gcc TCP/Chatclient.c -o chatclient
-./chatserver 8080
-./chatclient localhost 8080
+./chatserver 
+./chatclient 
 ```
 
 ## Requirements
